@@ -1,30 +1,33 @@
-# quarkus-form-attributes project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Unable to find contextual data of type: io.vertx.core.http.HttpServerRequest #9284
+https://github.com/quarkusio/quarkus/issues/9284
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+Reproduce
 
-## Running the application in dev mode
+1. `git clone https://github.com/aguilardias/quarkus-form-attributes.git`
 
-You can run your application in dev mode that enables live coding using:
+2. Open a new terminal and execute the following curl command (update file path):  
+`curl -X POST "http://localhost:8080/hello" -H "accept: text/plain" -H "Content-Type: multipart/form-data" -F "name=user name" -F "photo=@/path/to/file"`
+
+3. Watch error
 ```
-./mvnw quarkus:dev
+endHandler
+org.jboss.resteasy.spi.LoggableFailure: RESTEASY003880: Unable to find contextual data of type: io.vertx.core.http.HttpServerRequest
+        at org.jboss.resteasy.core.ContextParameterInjector$GenericDelegatingProxy.invoke(ContextParameterInjector.java:124)
+        at com.sun.proxy.$Proxy41.formAttributes(Unknown Source)
+        at org.acme.AuditFilter.lambda$filter$1(AuditFilter.java:25)
+        at io.vertx.core.http.impl.HttpServerRequestImpl.onEnd(HttpServerRequestImpl.java:530)
+        at io.vertx.core.http.impl.HttpServerRequestImpl.lambda$pendingQueue$1(HttpServerRequestImpl.java:118)
+        at io.vertx.core.streams.impl.InboundBuffer.handleEvent(InboundBuffer.java:237)
+        at io.vertx.core.streams.impl.InboundBuffer.drain(InboundBuffer.java:224)
+        at io.vertx.core.streams.impl.InboundBuffer.lambda$fetch$0(InboundBuffer.java:277)
+        at io.vertx.core.impl.ContextImpl.executeTask(ContextImpl.java:369)
+        at io.vertx.core.impl.EventLoopContext.lambda$executeAsync$0(EventLoopContext.java:38)
+        at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+        at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+        at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+        at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+        at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+        at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+        at java.base/java.lang.Thread.run(Thread.java:834)
 ```
-
-## Packaging and running the application
-
-The application can be packaged using `./mvnw package`.
-It produces the `quarkus-form-attributes-1.0.0-SNAPSHOT-runner.jar` file in the `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
-
-The application is now runnable using `java -jar target/quarkus-form-attributes-1.0.0-SNAPSHOT-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: `./mvnw package -Pnative`.
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
-
-You can then execute your native executable with: `./target/quarkus-form-attributes-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
