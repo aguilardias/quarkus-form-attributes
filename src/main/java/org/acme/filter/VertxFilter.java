@@ -20,7 +20,8 @@ public class VertxFilter {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			// if rc.next is called inside 'endHandler', i can see just UserForm.name field
+			// if rc.next is called inside 'endHandler', i can see just UserForm.name field,
+			// no UserForm.photo is seen
 			// and the ExampleResource.multipart dont receive form data
 //			rc.next();
 		});
