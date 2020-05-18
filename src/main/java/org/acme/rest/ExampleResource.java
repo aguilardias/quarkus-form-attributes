@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.rest;
 
 import static javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
@@ -26,7 +26,9 @@ public class ExampleResource {
 	@Consumes(MULTIPART_FORM_DATA)
 	@Produces(TEXT_PLAIN)
 	public String multipart(@MultipartForm UserForm form) {
-
+		System.out.println("rest controller");
+		System.out.println("name: " + form.name);
+		System.out.println("photo: " + form.photo);
 		return "rest response";
 	}
 }

@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.filter;
 
 import java.io.IOException;
 
@@ -18,17 +18,17 @@ public class AuditFilter implements ContainerRequestFilter {
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 
-		request.setExpectMultipart(true);
-		request.endHandler(v -> {
-			System.out.println("endHandler");
-			try {
-				request.formAttributes().forEach(f -> {
-					System.out.println("key: " + f.getKey());
-				});
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
+//		request.setExpectMultipart(true);
+//		request.endHandler(v -> {
+//			System.out.println("endHandler");
+//			try {
+//				request.formAttributes().forEach(f -> {
+//					System.out.println("key: " + f.getKey());
+//				});
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		});
 
 	}
 
