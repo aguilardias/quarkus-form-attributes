@@ -17,7 +17,7 @@ public class AuditFilter implements ContainerRequestFilter {
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
-		System.out.println("jax-rs filter");
+		System.out.println("jax-rs filter start");
 
 		request.setExpectMultipart(true);
 		request.endHandler(v -> {
@@ -30,7 +30,7 @@ public class AuditFilter implements ContainerRequestFilter {
 				e.printStackTrace();
 			}
 		});
-
+		System.out.println("jax-rs filter end");
 	}
 
 }

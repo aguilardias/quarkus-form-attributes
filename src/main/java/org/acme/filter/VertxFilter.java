@@ -8,7 +8,7 @@ public class VertxFilter {
 
 	@RouteFilter(100)
 	void myFilter(RoutingContext rc) {
-		System.out.println("vertx filter");
+		System.out.println("vertx filter start");
 
 		HttpServerRequest request = rc.request();
 		request.setExpectMultipart(true);
@@ -29,5 +29,7 @@ public class VertxFilter {
 		// if rc.next is called outside 'endHandler', i cant see just UserForm fields
 		// and the ExampleResource.multipart receive form data
 		rc.next();
+
+		System.out.println("vertx filter end");
 	}
 }
