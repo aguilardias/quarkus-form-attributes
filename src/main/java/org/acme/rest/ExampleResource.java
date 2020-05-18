@@ -27,8 +27,8 @@ public class ExampleResource {
 	@Produces(TEXT_PLAIN)
 	public String multipart(@MultipartForm UserForm form) {
 		System.out.println("rest controller");
-		System.out.println("name: " + form.name);
-		System.out.println("photo: " + form.photo);
+//		System.out.println("name: " + form.name);
+//		System.out.println("photo: " + form.photo);
 		return "rest response";
 	}
 }

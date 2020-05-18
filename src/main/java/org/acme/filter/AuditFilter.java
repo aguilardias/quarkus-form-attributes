@@ -17,18 +17,19 @@ public class AuditFilter implements ContainerRequestFilter {
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
+		System.out.println("jax-rs filter");
 
-//		request.setExpectMultipart(true);
-//		request.endHandler(v -> {
-//			System.out.println("endHandler");
-//			try {
-//				request.formAttributes().forEach(f -> {
-//					System.out.println("key: " + f.getKey());
-//				});
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		});
+		request.setExpectMultipart(true);
+		request.endHandler(v -> {
+			System.out.println("endHandler");
+			try {
+				request.formAttributes().forEach(f -> {
+					System.out.println("key: " + f.getKey());
+				});
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 
 	}
 
